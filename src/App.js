@@ -7,8 +7,9 @@ import arraysEqual from "./utils/arraysEqual"
 function App() {
   const [puzzle, setPuzzle] = useState([[]])
   const [activeTiles, setActiveTiles] = useState([])
+  const [wordList, setWordList] = useState(["WORLD", "HELLO"])
   useEffect(_ => {
-    setPuzzle(generator(["WORLD", "HELLO"],6, 6))
+    setPuzzle(generator(wordList,6, 6))
 
   },[])
 
@@ -22,6 +23,17 @@ function App() {
     }
   }
 
+  const checkSlected = _ => {
+    let sortedSelection = activeTiles.map(item => puzzle[item[0]][item[1]]).sort()
+    for (let i = 0; i < wordList.length; i++) {
+      if (arraysEqual(wordList[i].split("").sort(), sortedSelection)) {
+        console.log("match")
+        return
+      }
+    }
+    console.log("no match")
+  }
+
   return (
     <div className="App">
       {puzzle.map((item, row) => 
@@ -31,6 +43,7 @@ function App() {
           className={activeTiles.filter(item => arraysEqual(item, [row,col])).length > 0 ? "tile activetile" : "tile"}>{tile}
         </div>)}
       </div>)}
+      <button onClick={checkSlected}>Check selected</button>
     </div>
   );
 }
