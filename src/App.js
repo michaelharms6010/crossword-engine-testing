@@ -7,10 +7,10 @@ import arraysEqual from "./utils/arraysEqual"
 function App() {
   const [puzzle, setPuzzle] = useState([[]])
   const [activeTiles, setActiveTiles] = useState([])
-  const [wordList, setWordList] = useState(["WORLD", "HHELLO"])
+  const [wordList, setWordList] = useState(["WORLD", "HELLO"])
   const [solved, setSolved] = useState([])
   useEffect(_ => {
-    setPuzzle(generator(wordList,6, 6,1))
+    setPuzzle(generator(wordList,6, 6,2))
 
   },[])
 
@@ -58,7 +58,8 @@ function App() {
       <div className="row">
         {item.map((tile, col) => 
         <div onClick={_ => toggleTile(row,col)} 
-          className={activeTiles.filter(item => arraysEqual(item, [row,col])).length > 0 ? "tile activetile" : solved.filter(item => arraysEqual(item, [row,col])).length > 0  ? "tile solvedtile"  : "tile"}>{tile}
+          className={activeTiles.filter(item => arraysEqual(item, [row,col])).length > 0 ? "tile activetile" : solved.filter(item => arraysEqual(item, [row,col])).length > 0  ? "tile solvedtile"  : "tile"}>
+            {tile}
         </div>)}
       </div>)}
 

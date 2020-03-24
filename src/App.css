@@ -46,9 +46,11 @@
 .row {
   height:100%;
   line-height:1;
+  
 }
 
 .tile {
+  line-height:1.1;
   display:inline-block;
   width:1.2rem;
   height:1.2rem;
