@@ -19,6 +19,7 @@ function App() {
     for (let i = 0; i < wordList.length; i++) {
       if (arraysEqual(wordList[i].split("").sort(), sortedSelection)) {
         console.log("match")
+        setWordList(wordList.filter(item => item !== wordList[i]))
         setSolved([...solved, ...activeTiles])
         setActiveTiles([])
         return
@@ -26,8 +27,10 @@ function App() {
     }
   },[activeTiles])
 
+
   const toggleTile = (row, col) => {
     console.log("toggling", row, col)
+    if (wordList.length === 0) return
     
     if (activeTiles.filter(item => arraysEqual(item, [row,col])).length === 0) {
       setActiveTiles([...activeTiles, [row,col]])
@@ -36,7 +39,7 @@ function App() {
     }
   }
 
-  const checkSlected = _ => {
+  const checkSelected = _ => {
     let sortedSelection = activeTiles.map(item => puzzle[item[0]][item[1]]).sort()
     for (let i = 0; i < wordList.length; i++) {
       if (arraysEqual(wordList[i].split("").sort(), sortedSelection)) {
@@ -58,6 +61,8 @@ function App() {
           className={activeTiles.filter(item => arraysEqual(item, [row,col])).length > 0 ? "tile activetile" : solved.filter(item => arraysEqual(item, [row,col])).length > 0  ? "tile solvedtile"  : "tile"}>{tile}
         </div>)}
       </div>)}
+
+      {wordList.length > 0 ? null : <h1>You win!</h1>}
     </div>
   );
 }
