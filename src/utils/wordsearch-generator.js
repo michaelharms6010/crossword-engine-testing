@@ -29,7 +29,7 @@ export default function buildPuzzle(wordlist, puzzwidth, puzzheight, difficulty)
       
           if (directions[randIndex] === "row") {
             let row=Math.floor(Math.random() * wordsearch.length)
-            let col=Math.floor(Math.random() * (13 - word.length))
+            let col=Math.floor(Math.random() * (wordsearch[0].length - word.length))
             let rewind = [];
             
             for (let i = 0; i< word.length; i++){
