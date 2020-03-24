@@ -7,10 +7,10 @@ import arraysEqual from "./utils/arraysEqual"
 function App() {
   const [puzzle, setPuzzle] = useState([[]])
   const [activeTiles, setActiveTiles] = useState([])
-  const [wordList, setWordList] = useState(["WORLD", "HELLO"])
+  const [wordList, setWordList] = useState(["WORLD", "HHELLO"])
   const [solved, setSolved] = useState([])
   useEffect(_ => {
-    setPuzzle(generator(wordList,6, 6))
+    setPuzzle(generator(wordList,6, 6,1))
 
   },[])
 

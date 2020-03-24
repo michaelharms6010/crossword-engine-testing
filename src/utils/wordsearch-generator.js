@@ -1,5 +1,11 @@
-export default function buildPuzzle(wordlist, puzzwidth, puzzheight) {
-    
+export default function buildPuzzle(wordlist, puzzwidth, puzzheight, difficulty) {
+    let longest = wordlist.sort((a,b) => b.length - a.length)[0].length;
+    if (puzzwidth < longest || puzzheight < longest ) {
+      console.log("that puzzle won't fit.")
+      return [[]]
+    }
+    console.log(longest)
+    let index = difficulty > 1 ? 8 : 4;
     function randomFill(wordsearch){
         const letters="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         for (let row = 0; row < wordsearch.length; row++){
@@ -17,8 +23,7 @@ export default function buildPuzzle(wordlist, puzzwidth, puzzheight) {
         let directions = ["row", "column", "diagdown", "diagup",  "rowrev", "colrev", "diagrevup", "diagrevdown"];
         let valid = false
         while (!valid) {
-          let randIndex = Math.floor(Math.random() * 6);
-          randIndex=Math.floor(Math.random() * 8);
+          let randIndex=Math.floor(Math.random() * index);
           valid = true 
         
       
