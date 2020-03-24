@@ -58,7 +58,6 @@ function App() {
           className={activeTiles.filter(item => arraysEqual(item, [row,col])).length > 0 ? "tile activetile" : solved.filter(item => arraysEqual(item, [row,col])).length > 0  ? "tile solvedtile"  : "tile"}>{tile}
         </div>)}
       </div>)}
-      <button onClick={checkSlected}>Check selected</button>
     </div>
   );
 }
