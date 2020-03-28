@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import generator from "./utils/wordsearch-generator"
 import arraysEqual from "./utils/arraysEqual"
+import arrayIncluded from "./utils/arrayIncluded";
 
 function App() {
   const [puzzle, setPuzzle] = useState([[]])
@@ -32,7 +33,7 @@ function App() {
     console.log("toggling", row, col)
     if (wordList.length === 0) return
     
-    if (activeTiles.filter(item => arraysEqual(item, [row,col])).length === 0) {
+    if (!arrayIncluded(activeTiles, [row,col])) {
       setActiveTiles([...activeTiles, [row,col]])
     } else {
       setActiveTiles(activeTiles.filter(item => !arraysEqual(item,[row, col])))
@@ -47,7 +48,11 @@ function App() {
       <div className="row">
         {item.map((tile, col) => 
         <div onClick={_ => toggleTile(row,col)} 
-          className={activeTiles.filter(item => arraysEqual(item, [row,col])).length > 0 ? "tile activetile" : solved.filter(item => arraysEqual(item, [row,col])).length > 0  ? "tile solvedtile"  : "tile"}>
+          className={arrayIncluded(activeTiles, [row,col]) 
+          ? "tile activetile" 
+          : arrayIncluded(solved, [row,col])  
+            ? "tile solvedtile"  
+            : "tile"}>
             {tile}
         </div>)}
       </div>)}
