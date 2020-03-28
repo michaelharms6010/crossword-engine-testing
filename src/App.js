@@ -39,18 +39,7 @@ function App() {
     }
   }
 
-  const checkSelected = _ => {
-    let sortedSelection = activeTiles.map(item => puzzle[item[0]][item[1]]).sort()
-    for (let i = 0; i < wordList.length; i++) {
-      if (arraysEqual(wordList[i].split("").sort(), sortedSelection)) {
-        console.log("match")
-        setSolved([...solved, ...activeTiles])
-        setActiveTiles([])
-        return
-      }
-    }
-    console.log("no match")
-  }
+
 
   return (
     <div className="App">
