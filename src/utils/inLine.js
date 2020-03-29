@@ -26,7 +26,8 @@ export default function inLine(arr1, arr2, puzzle) {
         // if they're on the same column
         if (firstpoint[1] === secondpoint[1] && firstpoint[1] === arr2[1]) return true
         // TODO: if they're diagonal
-        
+        if (firstpoint[0] + arr2[0] === firstpoint[1] + arr2[1]) return true
+        if (firstpoint[0] - arr2[0] === firstpoint[1] - arr2[1]) return true
         return false
     }
 
