@@ -11,3 +11,5 @@ while (coffeeFullness) {
     }
 }
 console.log("Your coffee is empty!")
+
+// Grid adjacency test
