@@ -12,4 +12,6 @@ while (coffeeFullness) {
 }
 console.log("Your coffee is empty!")
 
-// Grid adjacency test
+// Grid adjacency test - call it "inline" - 
+// interprets selection direciton, 
+// resets grid if new selection doesn't fit the direction
