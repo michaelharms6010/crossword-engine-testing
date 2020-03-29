@@ -4,6 +4,7 @@ import './App.css';
 import generator from "./utils/wordsearch-generator"
 import arraysEqual from "./utils/arraysEqual"
 import arrayIncluded from "./utils/arrayIncluded";
+import inLine from "./utils/inLine";
 
 function App() {
   const [puzzle, setPuzzle] = useState([[]])
@@ -34,7 +35,15 @@ function App() {
     if (wordList.length === 0) return
     
     if (!arrayIncluded(activeTiles, [row,col])) {
-      setActiveTiles([...activeTiles, [row,col]])
+      // check validity
+      //if valid
+      if (inLine(activeTiles, [row,col], puzzle)){
+        setActiveTiles([...activeTiles, [row,col]])
+      } else {
+      // if invalid
+      setActiveTiles([[row,col]])
+      }
+
     } else {
       setActiveTiles(activeTiles.filter(item => !arraysEqual(item,[row, col])))
     }
