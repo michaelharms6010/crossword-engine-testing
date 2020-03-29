@@ -3,11 +3,7 @@ import arrayIncluded from "./arrayIncluded"
 export default function inLine(arr1, arr2, puzzle) {
     let maxrow = Math.max(...puzzle.map((item, index) => index))
     let maxcol = Math.max(...puzzle[0].map((item, index) => index))
-    console.log("maxrow" , maxrow)
-    console.log("Maxcol", maxcol)
     
-
-
     if ( arr1.length === 0) return true
     else if (arr1.length === 1) {
         let possibilities = []
@@ -22,9 +18,6 @@ export default function inLine(arr1, arr2, puzzle) {
         else if (arrayIncluded(possibilities, arr2)) return true
         return false
     }
-
-
-
 
     else if (arr1.length > 1) {
         let firstpoint = arr1[0]
