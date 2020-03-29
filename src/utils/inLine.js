@@ -6,12 +6,25 @@ export default function inLine(arr1, arr2, puzzle) {
     let maxcol = Math.max(puzzle[0].map((item, index) => index))
     
 
+
     if ( arr1.length === 0) return true
     else if (arr1.length === 1) {
+        let possibilities = []
+        for (let i = 0; i <= maxrow; i ++) {
+            for (let j = 0; j <= maxcol; j++) {
+                if (i === arr1[0][0]) possibilities.push([i,j])
+                else if (j === arr1[0][1]) possibilities.push([i,j])
+            }
+        }
+
+
+
         if (arr1[0][0] === arr2[0]) return true
         else if (arr1[0][1] === arr2[1]) return true
         else if (arr1[0][0] - arr2[0] === arr1[0][1] - arr2[1]) return true
         else if (arr1[0][0] + arr2[0] === arr1[0][1] + arr2[1]) return true
+        else if (arr1[0][0] - arr2[0] === arr1[0][1] + arr2[1]) return true
+        else if (arr1[0][0] + arr2[0] === arr1[0][1] - arr2[1]) return true
         return false
     }
 
