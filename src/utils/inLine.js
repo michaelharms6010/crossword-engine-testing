@@ -1,7 +1,6 @@
 import arrayIncluded from "./arrayIncluded"
 
 export default function inLine(arr1, arr2, puzzle) {
-    let direction = ""
     let maxrow = Math.max(...puzzle.map((item, index) => index))
     let maxcol = Math.max(...puzzle[0].map((item, index) => index))
     console.log("maxrow" , maxrow)
