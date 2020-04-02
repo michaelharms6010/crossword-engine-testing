@@ -1,3 +1,43 @@
+const words = ['a', 'after', 'all', 'an', 'and', 'are', 'as', 'by', 'continued', 'deadlines', 'doubly', 'fish', 'for', 'go', 'happen', 'happened', 'i', 'illusion', 'is', 'long', 'love', 'lunchtime', 'make', 'moment', 'noise', 'nothing', 'of', 'or', 'people', 'problem', 'second', 'so', 'summarize', 'summary', 'thanks', 'the', 'then', 'they', 'time', 'to', 'whooshing']
+
+
+
+console.log(cleave('foramomentnothinghappenedthenafterasecondorsonothingcontinuedtohappen', words))
+
+function cleave(string, arr) {
+    let input = string;
+    let output = "";
+    let match = "";
+    while (input) {
+        found = false;
+        for (i = 0; i < arr.length; i++) {
+            if (input.slice(0, arr[i].length) === arr[i]) {
+
+                if (input.length === arr[i].length) {
+                    console.log(input.slice(arr[i]))
+                    found = true
+                    match = arr[i];
+                }
+                for( j = 0; j < arr.length; j++) {
+                    if (input.slice(arr[i].length, arr[i].length + arr[j].length) === arr[j]) {
+                        console.log(input.slice(arr[i]))
+                        found = true
+                        match = arr[i];
+                    } 
+                } 
+                
+            } else if(!found && i === arr.length -1) {
+                return "Cleaving stalled: Word not found"
+            }
+        }
+        output += match + " "
+        input = input.slice(match.length);
+        match = "";
+    }
+    return output.trim()
+}
+
+
 // join(["oven", "envier", "erase", "serious"]) ➞ ["ovenvieraserious", 2]
 
 function join(arr) {
@@ -25,8 +65,6 @@ function join(arr) {
     }
     return [outstring, min]
 }
-console.log(join(["oven", "envier", "erase", "serious"]))
-console.log(join(["aaa", "bbb", "ccc", "ddd"]))
 
 // function ascending(str) {
 //     let len = 1;
